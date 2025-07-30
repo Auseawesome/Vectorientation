@@ -11,5 +11,6 @@
   "vectorientation.configuration.minWarp": "Minimum Warp",
   "vectorientation.configuration.minWarp.tooltip": "Defines the vertical squish at 0 velocity",
   "vectorientation.configuration.blocks": "Blacklist",
-  "vectorientation.configuration.blocks.tooltip": "A list of blocks that should not be squished."
+  "vectorientation.configuration.blocks.tooltip": "A list of blocks that should not be squished. (Editing in config screen is only partially supported)",
+  "vectorientation.configuration.blocks.button": "Edit"
 }
