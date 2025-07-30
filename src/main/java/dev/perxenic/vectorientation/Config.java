@@ -20,8 +20,6 @@ public class Config {
 
     private static final ModConfigSpec.DoubleValue WARP_FACTOR = BUILDER.comment("Defines the amount squish increases with velocity").defineInRange("warpFactor", 1.0, 0, Double.MAX_VALUE);
 
-    private static final ModConfigSpec.BooleanValue MINECARTS = BUILDER.comment("Whether Minecarts should be enabled (Warning: Quite Janky)").define("minecarts", false);
-
     // a list of strings that are treated as resource locations for blocks
     private static final ModConfigSpec.ConfigValue<List<? extends String>> BLACKLIST = BUILDER.comment("A list of blocks that should not be squished.").defineListAllowEmpty("blocks", List.of("minecraft:anvil", "minecraft:chipped_anvil", "minecraft:damaged_anvil"), Config::validateBlockName);
 
@@ -30,7 +28,6 @@ public class Config {
     public static boolean squetch;
     public static double minWarp;
     public static double warpFactor;
-    public static boolean minecarts;
     public static Set<Block> blacklist;
 
     private static boolean validateBlockName(final Object obj) {
@@ -42,7 +39,6 @@ public class Config {
         squetch = SQUETCH.get();
         minWarp = MIN_WARP.get();
         warpFactor = WARP_FACTOR.get();
-        minecarts = MINECARTS.get();
 
         // convert the list of strings into a set of items
         blacklist = BLACKLIST.get().stream().map(blockName -> BuiltInRegistries.BLOCK.get(ResourceLocation.parse(blockName))).collect(Collectors.toSet());
