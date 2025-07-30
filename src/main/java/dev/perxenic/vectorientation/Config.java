@@ -15,10 +15,13 @@ import java.util.stream.Collectors;
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    //TODO: Remove in favour of just setting warp factor to 0
     private static final ModConfigSpec.BooleanValue SQUETCH = BUILDER.comment("Whether Squash & Stretch should be enabled").define("squetch", true);
 
+    //TODO: Add a MAX_WARP
     private static final ModConfigSpec.DoubleValue MIN_WARP = BUILDER.comment("Defines the vertical squish at 0 velocity").defineInRange("minWarp", 0.75, 0, Double.MAX_VALUE);
 
+    //TODO: Separate into width and height
     private static final ModConfigSpec.DoubleValue WARP_FACTOR = BUILDER.comment("Defines the amount squish increases with velocity").defineInRange("warpFactor", 1.0, 0, Double.MAX_VALUE);
 
     //TODO: Rename config entry to blacklist on major version update
