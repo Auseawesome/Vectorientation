@@ -1,6 +1,10 @@
 {
   "vectorientation.configuration.warpFactor": "Warp Factor",
+  "vectorientation.configuration.warpFactor.tooltip": "Defines the amount squish increases with velocity",
   "vectorientation.configuration.squetch": "Squetch",
+  "vectorientation.configuration.squetch.tooltip": "Whether Squash & Stretch should be enabled",
   "vectorientation.configuration.minWarp": "Minimum Warp",
-  "vectorientation.configuration.blocks": "Blacklist"
+  "vectorientation.configuration.minWarp.tooltip": "Defines the vertical squish at 0 velocity",
+  "vectorientation.configuration.blocks": "Blacklist",
+  "vectorientation.configuration.blocks.tooltip": "A list of blocks that should not be squished."
 }
