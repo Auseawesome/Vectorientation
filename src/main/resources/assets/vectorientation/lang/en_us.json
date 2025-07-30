@@ -1,0 +1,6 @@
+{
+  "vectorientation.configuration.warpFactor": "Warp Factor",
+  "vectorientation.configuration.squetch": "Squetch",
+  "vectorientation.configuration.minWarp": "Minimum Warp",
+  "vectorientation.configuration.blocks": "Blacklist"
+}

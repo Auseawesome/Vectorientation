@@ -20,7 +20,7 @@ public class Config {
 
     private static final ModConfigSpec.DoubleValue WARP_FACTOR = BUILDER.comment("Defines the amount squish increases with velocity").defineInRange("warpFactor", 1.0, 0, Double.MAX_VALUE);
 
-    // a list of strings that are treated as resource locations for blocks
+    //TODO: Rename config entry to blacklist on major version update
     private static final ModConfigSpec.ConfigValue<List<? extends String>> BLACKLIST = BUILDER.comment("A list of blocks that should not be squished.").defineListAllowEmpty("blocks", List.of("minecraft:anvil", "minecraft:chipped_anvil", "minecraft:damaged_anvil"), Config::validateBlockName);
 
     static final ModConfigSpec SPEC = BUILDER.build();
