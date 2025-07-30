@@ -31,7 +31,7 @@ public class Vectorientation {
     }
 
     public static void addRotation(Entity entity, PoseStack poseStack) {
-        if (entity.onGround() || !Config.squetch) return;
+        if (entity.onGround()) return;
         Vec3 deltaMovement = entity.getDeltaMovement();
         Vector3d velocity = new Vector3d(deltaMovement.x, deltaMovement.y, deltaMovement.z);
         velocity.y -= entity.getGravity() * entity.getGravity();
@@ -47,7 +47,9 @@ public class Vectorientation {
         }
         poseStack.translate(0.5D, 0.5D, 0.5D);
         poseStack.mulPose(rot);
-        poseStack.scale(1 / speed, speed, 1 / speed);
+        if (Config.squetch) {
+            poseStack.scale(1 / speed, speed, 1 / speed);
+        }
         poseStack.translate(-0.5D, -0.5D, -0.5D);
     }
 }
