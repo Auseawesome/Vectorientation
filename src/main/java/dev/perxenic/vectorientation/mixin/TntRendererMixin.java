@@ -25,25 +25,27 @@ public class TntRendererMixin {
             method = "render(Lnet/minecraft/world/entity/item/PrimedTnt;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V"
     )
     public void addRotation(PrimedTnt entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
-        Vec3 deltaMovement = entity.getDeltaMovement();
-        Vector3d velocity = new Vector3d(deltaMovement.x, deltaMovement.y, deltaMovement.z);
-        velocity.y -= entity.getGravity() * entity.getGravity();
-        velocity.y *= .98D;
+        if (!entity.onGround()) {
+            Vec3 deltaMovement = entity.getDeltaMovement();
+            Vector3d velocity = new Vector3d(deltaMovement.x, deltaMovement.y, deltaMovement.z);
+            velocity.y -= entity.getGravity() * entity.getGravity();
+            velocity.y *= .98D;
 
-        boolean blacklisted = Config.blacklist.contains(entity.getBlockState().getBlock());
-        float speed = (!blacklisted && Config.squetch) ?
-                (float) (Config.minWarp + Config.warpFactor * velocity.length())
-                : 1.0f;
-        float angle = (float) Math.acos(velocity.normalize().y);
-        Vector3f axis = new Vector3f((float) (-1 * velocity.z()), 0, (float) velocity.x());
-        Quaternionf rot = new Quaternionf();
-        if(axis.length() > .01f){
-            axis.normalize();
-            rot = new Quaternionf(new AxisAngle4f(-angle, axis));
+            boolean blacklisted = Config.blacklist.contains(entity.getBlockState().getBlock());
+            float speed = (!blacklisted && Config.squetch) ?
+                    (float) (Config.minWarp + Config.warpFactor * velocity.length())
+                    : 1.0f;
+            float angle = (float) Math.acos(velocity.normalize().y);
+            Vector3f axis = new Vector3f((float) (-1 * velocity.z()), 0, (float) velocity.x());
+            Quaternionf rot = new Quaternionf();
+            if (axis.length() > .01f) {
+                axis.normalize();
+                rot = new Quaternionf(new AxisAngle4f(-angle, axis));
+            }
+            poseStack.translate(0.5D, 0.5D, 0.5D);
+            poseStack.mulPose(rot);
+            poseStack.scale(1 / speed, speed, 1 / speed);
+            poseStack.translate(-0.5D, -0.5D, -0.5D);
         }
-        poseStack.translate(0.5D, 0.5D, 0.5D);
-        poseStack.mulPose(rot);
-        poseStack.scale(1/speed, speed, 1/speed);
-        poseStack.translate(-0.5D, -0.5D, -0.5D);
     }
 }
