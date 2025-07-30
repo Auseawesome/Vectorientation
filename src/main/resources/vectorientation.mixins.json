@@ -6,6 +6,7 @@
   "mixins": [
   ],
   "client": [
+    "FallingBlockRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
