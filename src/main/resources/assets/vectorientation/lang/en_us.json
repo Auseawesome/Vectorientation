@@ -1,4 +1,9 @@
 {
+  "vectorientation.configuration.title": "Vectorientation Configuration",
+
+  "vectorientation.configuration.section.vectorientation.client.toml": "Vectorientation Configuration Client Section",
+  "vectorientation.configuration.section.vectorientation.client.toml.title": "Vectorientation Configuration Client Section",
+
   "vectorientation.configuration.warpFactor": "Warp Factor",
   "vectorientation.configuration.warpFactor.tooltip": "Defines the amount squish increases with velocity",
   "vectorientation.configuration.squetch": "Squetch",
